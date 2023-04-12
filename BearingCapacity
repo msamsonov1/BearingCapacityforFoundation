@@ -1,0 +1,26 @@
+import math
+
+# Input parameters
+cohesion = float(input("Enter soil cohesion in pounds per square foot: "))
+friction_angle = float(input("Enter soil friction angle in degrees: "))
+overburden_pressure = float(input("Enter overburden pressure in pounds per square foot: "))
+foundation_depth = float(input("Enter foundation depth in feet: "))
+foundation_width = float(input("Enter foundation width in feet: "))
+shape_factor = float(input("Enter shape factor: "))
+gamma_soil = float(input("Enter soil unit weight in pounds per cubic foot: "))
+
+# Calculation
+c = cohesion
+phi = math.radians(friction_angle)
+sigma_v = overburden_pressure
+Df = foundation_depth
+B = foundation_width
+Nq = math.sqrt((math.tan(math.radians(45 + 0.5 * friction_angle))) ** 2 + 1)
+Sq = (1 + math.sin(math.radians(friction_angle))) / (1 - math.sin(math.radians(friction_angle)))
+Ngamma = (1 + math.sin(math.radians(friction_angle))) / (1 - math.sin(math.radians(friction_angle))) * math.exp(math.pi * math.tan(math.radians(friction_angle)))
+Sgamma = 1 + 0.4 * (B / Df) * math.sqrt(Ngamma)
+qult = c * Nq * shape_factor + gamma_soil * Df * Nq * Sq + 0.5 * gamma_soil * B * Ngamma * Sgamma
+
+# Output results
+print("Ultimate bearing capacity:")
+print(f"{qult:.2f} psf")
