@@ -1,0 +1,229 @@
+import math
+
+def bearing_capacity(phi, sf, c, gamma, Df, Bf):
+  """
+  Calculates the bearing capacity of a soil.
+  Bearing Capacity Factors (AASHTO, 2004 with 2006 Interims)
+
+  Args:
+    phi: The friction angle of the soil.
+    sf: The safety factor.
+    c: Cohesion from the lab 1/2 of uncofined compr. stress ASTM D2166.
+    gamma: Unit weight of the soil (lbs/ft^3 (pcf)).
+    Df: Depth of footing (ft).
+    Bf: Width of the proposed footing (ft).
+
+  Returns:
+    The allowable bearing capacity of the soil.
+  """
+
+  qult = 5.14 * math.sqrt(phi) * sf
+  qa = qult / sf
+
+  # Bearing capacity factors
+
+  if phi == 0:
+    Nc = 5.14
+    Nq = 1
+    Ny = 0
+  elif phi == 1:
+    Nc = 5.4
+    Nq = 1.1
+    Ny = 0.1
+  elif phi == 2:
+    Nc = 5.6
+    Nq = 1.2
+    Ny = 0.2
+  elif phi == 3:
+    Nc = 5.9
+    Nq = 1.3
+    Ny = 0.2
+  elif phi == 4:
+    Nc = 6.2
+    Nq = 1.4
+    Ny = 0.3
+  elif phi == 5:
+    Nc = 6.5
+    Nq = 1.6
+    Ny = 0.5
+  elif phi == 6:
+    Nc = 6.8
+    Nq = 1.7
+    Ny = 0.6
+  elif phi == 7:
+    Nc = 7.2
+    Nq = 1.9
+    Ny = 0.7
+  elif phi == 8:
+    Nc = 7.5
+    Nq = 2.1
+    Ny = 0.9
+  elif phi == 9:
+    Nc = 7.9
+    Nq = 2.3
+    Ny = 1
+  elif phi == 10:
+    Nc = 8.4
+    Nq = 2.5
+    Ny = 1.2
+  elif phi == 11:
+    Nc = 8.8
+    Nq = 2.7
+    Ny = 1.4
+  elif phi == 12:
+    Nc = 9.3
+    Nq = 3.0
+    Ny = 1.7
+  elif phi == 13:
+    Nc = 9.8
+    Nq = 3.3
+    Ny = 2
+  elif phi == 14:
+    Nc = 10.4
+    Nq = 3.6
+    Ny = 2.3
+  elif phi == 15:
+    Nc = 11
+    Nq = 3.9
+    Ny = 2.7
+  elif phi == 16:
+    Nc = 11.6
+    Nq = 4.3
+    Ny = 3.1
+  elif phi == 17:
+    Nc = 12.3
+    Nq = 4.8
+    Ny = 3.5
+  elif phi == 18:
+    Nc = 13.1
+    Nq = 5.3
+    Ny = 4.1
+  elif phi == 19:
+    Nc = 13.9
+    Nq = 5.8
+    Ny = 4.7
+  elif phi == 20:
+    Nc = 14.8
+    Nq = 6.4
+    Ny = 5.4
+  elif phi == 21:
+    Nc = 15.8
+    Nq = 7.1
+    Ny = 6.2
+  elif phi == 22:
+    Nc = 16.9
+    Nq = 7.8
+    Ny = 7.1
+  elif phi == 23:
+    Nc = 18.1
+    Nq = 8.7
+    Ny = 8.2
+  elif phi == 24:
+    Nc = 19.3
+    Nq = 9.6
+    Ny = 9.4
+  elif phi == 25:
+    Nc = 20.7
+    Nq = 10.7
+    Ny = 10.9
+  elif phi == 26:
+    Nc = 22.3
+    Nq = 11.9
+    Ny = 12.5
+  elif phi == 27:
+    Nc = 23.9
+    Nq = 13.2
+    Ny = 14.5
+  elif phi == 28:
+    Nc = 25.8
+    Nq = 14.7
+    Ny = 16.7
+  elif phi == 29:
+    Nc = 27.9
+    Nq = 16.4
+    Ny = 19.3
+  elif phi == 30:
+    Nc = 30.1
+    Nq = 18.4
+    Ny = 22.4
+  elif phi == 31:
+    Nc = 32.7
+    Nq = 20.6
+    Ny = 26.0
+  elif phi == 32:
+    Nc = 35.5
+    Nq = 23.2
+    Ny = 30.2
+  elif phi == 33:
+    Nc = 38.6
+    Nq = 26.1
+    Ny = 35.2
+  elif phi == 34:
+    Nc = 42.2
+    Nq = 29.4
+    Ny = 41.1
+  elif phi == 35:
+    Nc = 46.1
+    Nq = 33.3
+    Ny = 48.0
+  elif phi == 36:
+    Nc = 50.6
+    Nq = 37.8
+    Ny = 56.3
+  elif phi == 37:
+    Nc = 55.6
+    Nq = 42.9
+    Ny = 66.2
+  elif phi == 38:
+    Nc = 61.4
+    Nq = 48.9
+    Ny = 78
+  elif phi == 39:
+    Nc = 67.9
+    Nq = 56
+    Ny = 92.3
+  elif phi == 40:
+    Nc = 75.3
+    Nq = 64.2
+    Ny = 109.4
+  elif phi == 41:
+    Nc = 83.9
+    Nq = 73.9
+    Ny = 130.2
+  elif phi == 42:
+    Nc = 93.7
+    Nq = 85.4
+    Ny = 155.6
+  elif phi == 43:
+    Nc = 105.1
+    Nq = 99
+    Ny = 186.5
+  elif phi == 44:
+    Nc = 118.4
+    Nq = 115.3
+    Ny = 224.6
+  elif phi == 45:
+    Nc = 133.9
+    Nq = 134.9
+    Ny = 271.8
+
+
+  qa = ((c * Nc) + (gamma * Df * Nq) + (0.5 * gamma * Bf * Ny))/sf
+
+  return qa
+
+def main():
+  phi = float(input("Enter the friction angle of the soil: "))
+  c = float(input("Enter cohesion from the lab 1/2 of uncofined compr. stress ASTM D2166: "))
+  gamma = float(input("Enter the unit weight of the soil (lbs/ft^3 (pcf)): "))
+  Df = float(input("Enter the depth of footing (ft): "))
+  Bf = float(input("Enter the width of the proposed strip footing (ft): "))
+
+  sf = float(input("Enter the safety factor: "))
+
+  qa = bearing_capacity(phi, sf, c, gamma, Df, Bf)
+
+  print("The allowable bearing capacity (with no water table) per Bearing Capacity Factors (AASHTO, 2004 with 2006 Interims) of the soil is:", qa)
+
+if __name__ == "__main__":
+  main()
